@@ -72,12 +72,36 @@ const Rule = Styled.hr`
 
 `;
 
-const Posts = props => {
+
+
+class Posts extends React.Component {
+    constructor(props) {
+        super(props);
+        this.state = {
+            posts: props.posts,
+            search: ''
+        }
+    }
+
+
+searchFunction = event => {
+    const results = this.props.posts.map(item => {
+      if (item.title.includes(event.target.value)) {
+        return item;
+      }
+      else return;
+    });
+    console.log(results);
+    console.log(this.props.posts);
+    this.setState({search: results});
+  }
+
+  render() {
     return (
         <Container>
             <Sidebar>
-                <Search posts={props.posts} />
-                <TopFive posts={props.posts}/>
+                <Search posts={this.state.posts} searchFunction={this.searchFunction}/>
+                <TopFive posts={this.state.posts}/>
             </Sidebar>
         <PostsContainer>
             <Head>Lambda Times</Head>
@@ -89,12 +113,16 @@ const Posts = props => {
                 </FeatureText>
                 </Featured>
             </FeaturedContainer>
-            {props.posts.map(post=> {
+            <div> 
+            {this.state.search.length > 0 ? this.state.search : this.props.posts.map(post=> {
                 return <Link to={`/post/${post.id}`} style={{ textDecoration: 'none', color: 'black'}}><PostBox><Post key={post.id} post={post} /></PostBox><Rule /></Link>
             })}
+            </div>
         
         </PostsContainer>
         </Container>
     )
 }
+}
+
 export default Posts;

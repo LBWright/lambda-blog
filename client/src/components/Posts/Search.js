@@ -1,34 +1,18 @@
 import React from 'react';
 
-class Search extends React.Component {
-    constructor(props) {
-        super(props);
-        this.state = {
-            posts: props.posts,
-            search: ''
-        }
-    }
+const Search = props => {
 
-    searchFunction = event => {
-        const results = this.state.posts.filter(item => {
-          if (item.includes(event.target.value)) {
-            return item;
-          }
-        });
-        this.setState({search: results});
-      }
-
-    render() {
         return (
-            <div>
+            <form  onSubmit={props.searchFunction}>
                 <input type='text'
                 placeholder='Search'
-                onSubmit={this.searchFunction}
+                defaultValue=''   
                 />
                
-            </div>
+            </form>
         )
-    }
+    
 }
+
 
 export default Search;
