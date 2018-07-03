@@ -3,7 +3,7 @@ const router = express.Router();
 
 const Blog = require("../../schemas/BlogSchema");
 
-// "/api/auth/" 
+// "/api/auth/blogs" 
 
 const deleteID = (req, res) => {
     const { id } = req.params;
@@ -21,10 +21,10 @@ const deleteID = (req, res) => {
 
 const updateID = (req, res) => {
     const { id } = req.params;
-    const { blog_title, blog_body } = req.body;
+    const { blog_title, blog_body, tag, userId } = req.body;
 
     Blog
-      .findByIdAndUpdate({id, blog_title, blog_body })
+      .findByIdAndUpdate({id, blog_title, blog_body, tag, userId })
       .then(prevBlog => {
           res.status(200).json({Success: `${id} successfully updated`})
       })
@@ -34,12 +34,12 @@ const updateID = (req, res) => {
 };
 
 const post = (req, res) => {
-    const { blog_title, blog_body, tag} = req.body;
-    if(!blog_title || !blog_body){
-        res.status(400).json({Error:err.message});
+    const { blog_title, blog_body, tag, userId} = req.body;
+    if(!req.body){
+        res.status(400).json({Error:"blog_title and blog_body required"});
     }
     Blog
-      .create({ blog_title, blog_body, tag})
+      .create({ blog_title, blog_body, tag, userId})
       .then(blog => {
           console.log(blog)
           res.status(201).json(blog);
@@ -49,11 +49,14 @@ const post = (req, res) => {
       });
   };
 
-router.route('/blogs/:id')
+
+
+
+router.route('/:id')
     .delete(deleteID)
     .put(updateID);
 
-router.route('/blogs')
+router.route('/')
     .post(post);
 
 

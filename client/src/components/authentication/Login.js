@@ -3,6 +3,7 @@ import PropTypes from 'prop-types';
 import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
 import { loginUser } from '../../actions/actions_auth';
+import "../../index.css";
 
 class Login extends React.Component {
   constructor(props) {
@@ -38,24 +39,32 @@ class Login extends React.Component {
 
   render() {
     return (
-      <div>
-        <form onSubmit={this.onSubmit}>
-          <input
-            placeholder="Email Address"
-            name="username"
-            type="email"
-            value={this.state.username}
-            onChange={this.onInputChange}
-          />
+      <div className="form-wrapper">
+        <div className="headline-wrapper">
+        <h1 className="headline-h1">Lambda Times</h1>
+        <h4 className="headline-h4">Please log in</h4>
+        </div>
+        <form onSubmit={this.onSubmit} className="input-wrapper">
+          <div>
+            <input
+              placeholder="Email Address"
+              name="username"
+              type="email"
+              value={this.state.username}
+              onChange={this.onInputChange}
+              className="input-handler"
+            />
 
-          <input
-            placeholder="Password"
-            name="password"
-            type="password"
-            value={this.state.password}
-            onChange={this.onInputChange}
-          />
-          <button type="submit" value="Login">
+            <input
+              placeholder="Password"
+              name="password"
+              type="password"
+              value={this.state.password}
+              onChange={this.onInputChange}
+              className="input-handler"
+            />
+          </div>
+          <button className="button-login" type="submit" value="Login">
             Login
           </button>
         </form>

@@ -50,74 +50,99 @@ class Register extends Component {
   };
   render() {
     return (
-      <form onSubmit={this.onSubmit}>
-        <input
-          placeholder="First Name"
-          name="firstName"
-          type="name"
-          value={this.state.firstName}
-          onChange={this.onInputChange}
-        />
-        <input
-          placeholder="Last Name"
-          name="lastName"
-          type="name"
-          value={this.state.lastName}
-          onChange={this.onInputChange}
-        />
-        <input
-          placeholder="Email Address"
-          name="username"
-          type="email"
-          value={this.state.username}
-          onChange={this.onInputChange}
-        />
-        <input
-          placeholder="Password"
-          name="password"
-          type="password"
-          value={this.state.password}
-          onChange={this.onInputChange}
-        />
-        <input
-          placeholder="Password"
-          name="password2"
-          type="password"
-          value={this.state.password2}
-          onChange={this.onInputChange}
-        />
-        <input
-          type="text"
-          placeholder="What Cohort?"
-          name="cohort_name"
-          type="text"
-          value={this.state.cohort_name}
-          onChange={this.onInputChange}
-        />
-        <textarea
-          placeholder="What are some of your skills?"
-          name="skills"
-          type="text"
-          value={this.state.skills}
-          onChange={this.onInputChange}
-        />
-        <textarea
-          placeholder="Describe some of your job interests. (ex: React, Frontend Developer, Python Dev)"
-          name="job_interests"
-          type="text"
-          value={this.state.job_interests}
-          onChange={this.onInputChange}
-        />
-        <textarea
-          placeholder="Write a little about yourself"
-          name="about"
-          type="text"
-          value={this.state.about}
-          onChange={this.onInputChange}
-        />
-        <button type="submit" value="Register">
-          Register
-        </button>
+      <form className="form-wrapper" onSubmit={this.onSubmit}>
+        <div className="headline-wrapper register-form-headline" >
+          <h1 className="headline-h1">Lambda Times</h1>
+          <h4 className="headline-h4">Register</h4>
+        </div>
+        <div className="input-wrapper register-form">
+          <div>
+          <input
+            className="input-handler"
+            placeholder="First Name"
+            name="firstName"
+            type="name"
+            value={this.state.firstName}
+            onChange={this.onInputChange}
+          />
+          <input
+            className="input-handler"
+            placeholder="Last Name"
+            name="lastName"
+            type="name"
+            value={this.state.lastName}
+            onChange={this.onInputChange}
+          />
+          </div>
+          <div>
+          <input
+            className="input-handler"
+            placeholder="Email Address"
+            name="username"
+            type="email"
+            value={this.state.username}
+            onChange={this.onInputChange}
+          />
+          <input
+            className="input-handler"
+            type="text"
+            placeholder="What Cohort?"
+            name="cohort_name"
+            type="text"
+            value={this.state.cohort_name}
+            onChange={this.onInputChange}
+          />
+          </div>
+          <div>
+          <input
+            className="input-handler"
+            placeholder="Password"
+            name="password"
+            type="password"
+            value={this.state.password}
+            onChange={this.onInputChange}
+          />
+          <input
+            className="input-handler"
+            placeholder="Confirm Password"
+            name="password2"
+            type="password"
+            value={this.state.password2}
+            onChange={this.onInputChange}
+          />
+          </div>
+          <div>
+          <textarea
+            className="input-handler text-area"
+            placeholder="What are some of your skills?"
+            name="skills"
+            type="text"
+            value={this.state.skills}
+            onChange={this.onInputChange}
+          />
+          <textarea
+          className="input-handler text-area"
+            placeholder="Describe some of your job interests. (ex: React, Frontend Developer, Python Dev)"
+            name="job_interests"
+            type="text"
+            value={this.state.job_interests}
+            onChange={this.onInputChange}
+          />
+          </div>
+          <div>
+          <textarea
+            className="input-handler text-area bio"
+            placeholder="Write a little about yourself"
+            name="about"
+            type="text"
+            value={this.state.about}
+            onChange={this.onInputChange}
+          />
+          </div>
+          <button className="button-register" type="submit" value="Register">Register</button>
+        </div>
+        
+ 
       </form>
     );
   }

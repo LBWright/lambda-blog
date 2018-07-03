@@ -11,8 +11,8 @@ const database = "heroku_r8hcb39h";
 const userRouter = require("./routes/unrestricted/userRouter");
 const blogRouter = require("./routes/unrestricted/blogRouter");
 const tagRouter = require("./routes/unrestricted/tagRouter");
-const restrictedRouter = require("./routes/restricted/userRouter");
-
+const restrictedUserRouter = require("./routes/restricted/userRouter");
+const restrictedBlogRouter = require("./routes/restricted/blogRouter");
 const username = "lambdablog1234"
 const password = "temp1234"
 
@@ -60,7 +60,8 @@ app.use(helmet());
 
 app.use(cors(corsOptions));
 
-app.use('/api/auth', restricted, restrictedRouter);
+app.use('/api/auth/users', restricted, restrictedUserRouter);
+app.use('/api/auth/blogs', restricted, restrictedBlogRouter);
 app.use('/api/users', userRouter);
 app.use('/api/blogs', blogRouter);
 app.use('/api/tags', tagRouter);
