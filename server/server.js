@@ -25,27 +25,31 @@ mongoose.connect(`mongodb://${username}:${password}@ds125831.mlab.com:25831/${da
     console.log({ Error: err.message })
   })
 // mongoose.connect(`mongodb://localhost:27017/${database}`)
- 
 
 app.get('/', (req, res) => {
-  res.send({ api: 'api working successfully!' })
-})
+  res.send({api: "api working successfully!"});
+});
 
 const restricted = (req, res, next) => {
-  const token = req.headers.authorization
-  const secret = 'Blog-writing is so much fun!'
+  const token = req.headers.authorization;
+  const secret = "Blog-writing is so much fun!";
 
-  if (token) {
+  if(token){
     jwt.verify(token, secret, (err, decodedToken) => {
       if (err) {
-        return res.status(401).json({ message: 'Token was not decoded', err })
-      }
-      next()
-    })
-  } else {
-    res.send({ message: 'Error in retrieving token.' })
+        return res
+          .status(401)
+          .json({ message: 'Token was not decoded', err });
+      } 
+      next();
+    });
+
+  } 
+  else{
+    res.send({message: "Error in retrieving token."})
   }
 }
+
 
 const corsOptions = {
   credentials: true
@@ -53,6 +57,7 @@ const corsOptions = {
 
 app.use(express.json());
 app.use(helmet());
+
 app.use(cors(corsOptions));
 
 app.use('/api/auth', restricted, restrictedRouter);
@@ -62,10 +67,7 @@ app.use('/api/tags', tagRouter);
 
 const PORT = process.env.PORT || '25831';
 
-
-app.use(express.json())
-app.use(cors(corsOptions))
-
 app.listen(PORT, () => {
+
   console.log(`Listening on port ${PORT}`)
 });
