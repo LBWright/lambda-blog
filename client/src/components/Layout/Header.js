@@ -65,6 +65,12 @@ const Header = () => {
         <Link to="/login" style={{ textDecoration: 'none', color: 'black' }}>
           <MenuLink>Login</MenuLink>
         </Link>
+        <Link
+          to="/dashboard"
+          style={{ textDecoration: 'none', color: 'black' }}
+        >
+          <MenuLink>Profile</MenuLink>
+        </Link>
       </Links>
     </HeaderContainer>
   );

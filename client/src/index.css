@@ -5,61 +5,72 @@ body {
   font-size: 22px;
   font-weight: light;
 }
-.form-wrapper{
-  width:100%;
+.form-wrapper {
+  width: 100%;
   height: 100vh;
-  display:flex;
+  display: flex;
   flex-direction: column;
-  justify-content:center;
+  justify-content: center;
   align-items: center;
-  background: lightgray;;
+  background: lightgray;
 }
-.input-handler{
-  margin:15px;
+.input-handler {
+  margin: 15px;
   height: 25px;
   width: 200px;
 }
-.input-wrapper{
-  background-color: #B22222;
-  padding:30px;
-  text-align:center;
+.input-wrapper {
+  background-color: #b22222;
+  padding: 30px;
+  text-align: center;
 }
-.headline-wrapper{
-  display:flex;
+.headline-wrapper {
+  display: flex;
   flex-direction: column;
-  height:auto;
+  height: auto;
   align-items: center;
   background: white;
-  width: 532px;
+  width: 600px;
   border-bottom: 5px double darkgray;
 }
-.headline-h4{
-  height:30px;
+.headline-h4 {
+  height: 30px;
   margin: 0px auto;
 }
-.button-login{
+.button-login {
   background: white;
   width: 100px;
-  height:25px;
-  
-}
-.button-register{
   height: 25px;
-  background:white;
-  
 }
-.register-form{
-  display:flex;
-  flex-direction:column;
-  background-color: #B22222;
-  padding:30px;
-  text-align:center;
-
+.button-register {
+  height: 25px;
+  background: white;
+  border-radius: 5px;
+  border: 1px solid black;
 }
-.register-form-headline{
-  width:532px;
+.register-form {
+  display: flex;
+  flex-direction: column;
+  background-color: #b22222;
+  padding: 30px;
+  text-align: center;
 }
-.bio{
+.register-form-headline {
+  width: 544px;
+}
+.bio {
   height: 40px;
   width: 300px;
+}
+input {
+  height: 40px;
+  border-radius: 5px;
+  padding: 0 5px;
+  border: 1px solid black;
+}
+textarea {
+  height: 200px;
+  border-radius: 5px;
+  border: 1px solid black;
+  padding: 5px;
 }
