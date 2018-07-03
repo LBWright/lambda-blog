@@ -25,7 +25,7 @@ const options = {
 
 const BlogSchema = new mongoose.Schema(definition, options);
 
-const BlogModel = mongoose.model("Blog", BlogSchema);
+const BlogModel = mongoose.model("Blog", BlogSchema, "blogs");
 
 module.exports = BlogModel;
 

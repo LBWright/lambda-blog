@@ -9,7 +9,6 @@ const Blogs = require("../../schemas/BlogSchema")
 const get = (req, res) => {
   Blogs
     .find()
-    .populate('tag', { _id: 0 })
     .then(blogs => {
         res.status(200).json(blogs);
     })
@@ -25,7 +24,6 @@ const getID = (req, res) => {
     
     Blogs
       .findById(id)
-      .populate('tag', { _id: 0 })
       .then(blog => {
           res.status(200).json(blog);
       })

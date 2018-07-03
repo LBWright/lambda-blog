@@ -1,14 +1,14 @@
 const express = require('express');
 const router = express.Router();
 
-const Blogs = require("../../schemas/BlogSchema");
+const Blog = require("../../schemas/BlogSchema");
 
 // "/api/auth/" 
 
 const deleteID = (req, res) => {
     const { id } = req.params;
 
-    Blogs
+    Blog
       .findByIdAndRemove(id)
       .then(deletedBlog => {
           res.status(200).json({Success: `${id} successfully deleted from database`, deletedBlog})
@@ -22,7 +22,7 @@ const updateID = (req, res) => {
     const { id } = req.params;
     const { blog_title, blog_body } = req.body;
 
-    Blogs
+    Blog
       .findByIdAndUpdate(id, { blog_title, blog_body })
       .then(prevBlog => {
           res.status(200).json({Success: `${id} successfully updated`, prevBlog})
@@ -33,10 +33,14 @@ const updateID = (req, res) => {
 };
 
 const post = (req, res) => {
-    const { blog_title, blog_body, tag} = req.body
-    Blogs
-      .create({ blog_title, blog_body, tag })
+    const { blog_title, blog_body, tag} = req.body;
+    if(!blog_title || !blog_body){
+        res.status(400).json({Error:err.message});
+    }
+    Blog
+      .create({ blog_title, blog_body, tag})
       .then(blog => {
+          console.log(blog)
           res.status(201).json(blog);
       })
       .catch(err => {
