@@ -1,6 +1,6 @@
 import React from 'react';
 import Styled from 'styled-components';
-import Rating from './Rating';
+//import Rating from './Rating';
 
 const Headline = Styled.h3`
     font-family: 'PT Sans', sans-serif;
@@ -20,7 +20,6 @@ const Post = props => {
         <div>
         <Headline>{props.post.title}</Headline>
         <Body>{props.post.body}...</Body>
-        <Rating />
         </div>
     )
 }
