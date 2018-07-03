@@ -4,6 +4,7 @@ const app = express();
 const cors = require('cors');
 const mongoose = require('mongoose');
 const jwt = require('jsonwebtoken');
+const helmet = require('helmet')
 
 const database = "heroku_r8hcb39h";
 const userRouter = require("./routes/unrestricted/userRouter");
@@ -54,6 +55,7 @@ const corsOptions = {
 };
 
 app.use(express.json());
+app.use(helmet);
 app.use(cors(corsOptions));
 
 app.use('/api/auth', restricted, restrictedRouter);
