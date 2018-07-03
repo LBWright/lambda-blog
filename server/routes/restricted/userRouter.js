@@ -3,7 +3,7 @@ const router = express.Router()
 
 const User = require('../../schemas/UserSchema')
 
-// "/api/auth/"
+// "/api/auth/users"
 
 
 
@@ -57,7 +57,7 @@ const updateProfile = (req, res) => {
 
 
 router
-  .route('/users/:id')
+  .route('/:id')
   .delete(deleteProfile) //ok
   .put(updateProfile) //ok
 
