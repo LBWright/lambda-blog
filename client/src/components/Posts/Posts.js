@@ -3,6 +3,7 @@ import Post from './Post';
 import TopFive from './Top-5';
 import Styled from 'styled-components';
 import {Link} from 'react-router-dom';
+import Search from './Search';
 
 const Container = Styled.div`
     display: flex;
@@ -75,6 +76,7 @@ const Posts = props => {
     return (
         <Container>
             <Sidebar>
+                <Search posts={props.posts} />
                 <TopFive posts={props.posts}/>
             </Sidebar>
         <PostsContainer>
