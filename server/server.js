@@ -19,7 +19,7 @@ const password = "temp1234"
 //'mongodb://user:pass@host:port/dbname';
 mongoose.connect(`mongodb://${username}:${password}@ds125831.mlab.com:25831/${database}`)
  .then(() => {
-    console.log(`Connected to ${database}`)
+    console.log(`Connected to ${database}`);
   })
   .catch(err => {
     console.log({ Error: err.message })
