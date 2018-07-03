@@ -1,3 +1,4 @@
+
 const express = require('express');
 const app = express();
 
@@ -17,13 +18,13 @@ const password = "temp1234"
 
 //'mongodb://user:pass@host:port/dbname';
 mongoose.connect(`mongodb://${username}:${password}@ds125831.mlab.com:25831/${database}`)
-// mongoose.connect(`mongodb://localhost:27017/${database}`)
-  .then(() => {
+ .then(() => {
     console.log(`Connected to ${database}`);
   })
   .catch(err => {
-    console.log({Error: err.message});
-  });
+    console.log({ Error: err.message })
+  })
+// mongoose.connect(`mongodb://localhost:27017/${database}`)
 
 app.get('/', (req, res) => {
   res.send({api: "api working successfully!"});
@@ -55,7 +56,8 @@ const corsOptions = {
 };
 
 app.use(express.json());
-app.use(helmet);
+app.use(helmet());
+
 app.use(cors(corsOptions));
 
 app.use('/api/auth', restricted, restrictedRouter);
@@ -65,9 +67,7 @@ app.use('/api/tags', tagRouter);
 
 const PORT = process.env.PORT || '25831';
 
-
-
 app.listen(PORT, () => {
 
   console.log(`Listening on port ${PORT}`)
-})
+});
