@@ -11,20 +11,11 @@ const Root = props => {
   return (
     <div>
       <Route exact path="/" component={App} />
-<<<<<<< HEAD
       <Route exact path="/login" component={Login} />
       <Route exact path="/register" component={Register} />
       <Route exact path="/dashboard" component={Dashboard} />
       <Route exact path="/posts/new" component={CreatePost} />
       <Route path="/posts/:id" component={Post} />
-=======
-      <Route path="/login" component={Login} />
-      <Route path="/register" component={Register} />
-      <Route path="/dashboard" component={Dashboard} />
-      <Route path="/posts/new" component={CreatePost} />
-      <Route path="/posts/:id" component={Post} />
-      {/*<Route path="/profiles/:id" component={Profiles} />*/}
->>>>>>> 5f3acbf76c9ffca464a556f45a3c8fb4108f5ba5
     </div>
   );
 };
