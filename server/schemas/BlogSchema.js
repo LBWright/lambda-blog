@@ -10,9 +10,8 @@ const definition = {
         required: true
     },
     tag: {
-        type: mongoose.Schema.Types.ObjectId,
-        reqquired: true,
-        ref: "Tag"
+        type: String,
+        required: true,
     },
     createdOn: {
         type: Date,
@@ -26,7 +25,7 @@ const options = {
 
 const BlogSchema = new mongoose.Schema(definition, options);
 
-const BlogModel = mongoose.model("Blog", BlogSchema);
+const BlogModel = mongoose.model("Blog", BlogSchema, "blogs");
 
 module.exports = BlogModel;
 

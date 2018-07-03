@@ -63,7 +63,7 @@ const Header = () => {
             <MenuLink>About</MenuLink>
             <MenuLink>Blog</MenuLink>
             <MenuLink>Apply</MenuLink>
-            <Link to="/login" style={{ textDecoration: 'none', color: 'black'}}><MenuLink>Login</MenuLink></Link>
+           <Link to="/login" style={{ textDecoration: 'none', color: 'black'}}><MenuLink>Login</MenuLink></Link>
         </Links>
         </HeaderContainer>
         
