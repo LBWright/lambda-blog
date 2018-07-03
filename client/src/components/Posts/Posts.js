@@ -119,11 +119,12 @@ class Posts extends React.Component {
               : this.props.posts.map(post => {
                   return (
                     <Link
-                      to={`/blogs/${post._id}`}
+                      to={`/posts/${post._id}`}
                       style={{ textDecoration: 'none', color: 'black' }}
                     >
                       <PostBox>
-                        <Post key={post._id} post={post} />
+                        <div>{post.post_title}</div>
+                        <div>{post.post_body}</div>
                       </PostBox>
                       <Rule />
                     </Link>

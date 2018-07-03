@@ -5,16 +5,17 @@ import Login from './components/authentication/Login';
 import Dashboard from './components/dashboard/Dashboard';
 import Register from './components/authentication/Register';
 import CreatePost from './components/Posts/CreatePost';
+import Post from './components/Posts/Post';
 
 const Root = props => {
   return (
     <div>
       <Route exact path="/" component={App} />
-      <Route path="/login" component={Login} />
-      <Route path="/register" component={Register} />
-      <Route path="/dashboard" component={Dashboard} />
-      <Route path="/posts/new" component={CreatePost} />
-      {/*<Route path="/profiles/:id" component={Profiles} />*/}
+      <Route exact path="/login" component={Login} />
+      <Route exact path="/register" component={Register} />
+      <Route exact path="/dashboard" component={Dashboard} />
+      <Route exact path="/posts/new" component={CreatePost} />
+      <Route path="/posts/:id" component={Post} />
     </div>
   );
 };

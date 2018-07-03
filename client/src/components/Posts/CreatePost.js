@@ -34,6 +34,9 @@ class CreatePost extends Component {
   };
 
   render() {
+    if (!this.props.auth.isAuthenticated) {
+      this.props.history.push('/');
+    }
     return (
       <form onSubmit={this.onSubmit}>
         <input
