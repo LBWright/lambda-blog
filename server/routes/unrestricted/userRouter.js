@@ -21,7 +21,7 @@ const tokenGenerator = user => {
   return jwt.sign(payload, secret, options);
 };
 
-const getUsers = (req, res) => {
+const getUsers = (req, res) => { //works in heroku
   User.find()
     .select()
     .then(users => {
@@ -32,7 +32,7 @@ const getUsers = (req, res) => {
     });
 };
 
-const getProfile = (req, res) => {
+const getProfile = (req, res) => { //works in heroku
     const { id } = req.params
     User.findById(id)
       .select({ _id: 0 })
@@ -63,7 +63,7 @@ const getBlogPosts = (req, res) => {
         });
 };
 
-const register = (req, res) => {
+const register = (req, res) => { //works in heroku
   const {
     username,
     firstName,
@@ -95,7 +95,7 @@ const register = (req, res) => {
     });
 };
 
-const login = (req, res) => {
+const login = (req, res) => { //works in heroku
   const { username, password } = req.body
   User.findOne({ username })
     .then(user => {
@@ -131,12 +131,12 @@ const login = (req, res) => {
 
 
 
-router.route('/').get(getUsers)
-router.route('/:id').get(getProfile)
+router.route('/').get(getUsers) //ok
+router.route('/:id').get(getProfile) //ok
 router.route('/:id/blogs').get(getBlogPosts)
 
-router.route('/register').post(register)
+router.route('/register').post(register) //ok
 
-router.route('/login').post(login)
+router.route('/login').post(login) //ok
 
 module.exports = router

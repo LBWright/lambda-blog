@@ -6,7 +6,7 @@ const Blogs = require("../../schemas/BlogSchema")
 
 // "/api/blogs/"
 
-const get = (req, res) => {
+const get = (req, res) => { //ok
   Blogs
     .find()
     .then(blogs => {
@@ -19,7 +19,7 @@ const get = (req, res) => {
 
 
 
-const getID = (req, res) => {
+const getID = (req, res) => { //ok
     const { id } = req.params;
     
     Blogs

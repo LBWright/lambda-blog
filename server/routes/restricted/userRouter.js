@@ -47,7 +47,8 @@ const updateProfile = (req, res) => {
     about
   })
     .then(user => {
-      res.status(200).json({ Success: `${id} successfully updated` }, user)
+        console.log(user);
+      res.status(200).json({ Success: `${id} successfully updated` })
     })
     .catch(err => {
       res.status(500).json({ Error: err.message })
@@ -57,7 +58,7 @@ const updateProfile = (req, res) => {
 
 router
   .route('/users/:id')
-  .delete(deleteProfile)
-  .put(updateProfile)
+  .delete(deleteProfile) //ok
+  .put(updateProfile) //ok
 
 module.exports = router

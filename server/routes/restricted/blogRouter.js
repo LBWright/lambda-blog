@@ -11,7 +11,8 @@ const deleteID = (req, res) => {
     Blog
       .findByIdAndRemove(id)
       .then(deletedBlog => {
-          res.status(200).json({Success: `${id} successfully deleted from database`, deletedBlog})
+          console.log(deletedBlog);
+          res.status(200).json({Success: `${id} successfully deleted from database`})
       })
       .catch(err => {
           res.status(500).json({Error: err.message});
@@ -23,9 +24,9 @@ const updateID = (req, res) => {
     const { blog_title, blog_body } = req.body;
 
     Blog
-      .findByIdAndUpdate(id, { blog_title, blog_body })
+      .findByIdAndUpdate({id, blog_title, blog_body })
       .then(prevBlog => {
-          res.status(200).json({Success: `${id} successfully updated`, prevBlog})
+          res.status(200).json({Success: `${id} successfully updated`})
       })
       .catch(err => {
           res.status(500).json({Error: err.message});
