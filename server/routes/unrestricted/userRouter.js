@@ -16,18 +16,30 @@ const tokenGenerator = user => {
   const secret = 'Blog-writing is so much fun!'
 
   return jwt.sign(payload, secret, options)
-}
+};
 
-const getRoot = (req, res) => {
+const getUsers = (req, res) => {
   User.find()
-    .select({ _id: 0, username: 1, cohort_name: 1 })
+    .select({ _id: 0 })
     .then(users => {
       res.status(200).json(users)
     })
     .catch(err => {
       res.status(500).json({ Error: err.message })
-    })
-}
+    });
+};
+
+const getProfile = (req, res) => {
+    const { id } = req.params
+    User.findById(id)
+      .select({ _id: 0 })
+      .then(user => {
+        res.status(200).json(user)
+      })
+      .catch(err => {
+        res.status(500).json({ Error: err.message })
+      });
+  };
 
 const register = (req, res) => {
   const {
@@ -58,8 +70,8 @@ const register = (req, res) => {
     })
     .catch(err => {
       res.status(500).json({ Error: err.message })
-    })
-}
+    });
+};
 
 const login = (req, res) => {
   const { username, password } = req.body
@@ -92,10 +104,13 @@ const login = (req, res) => {
     })
     .catch(err => {
       res.status(500).json({ Error: err.message })
-    })
-}
+    });
+};
 
-router.route('/').get(getRoot)
+
+
+router.route('/').get(getUsers)
+router.route('/:id').get(getProfile)
 
 router.route('/register').post(register)
 

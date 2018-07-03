@@ -10,9 +10,8 @@ const definition = {
         required: true
     },
     tag: {
-        type: mongoose.Schema.Types.ObjectId,
-        reqquired: true,
-        ref: "Tag"
+        type: String,
+        required: true,
     },
     createdOn: {
         type: Date,
