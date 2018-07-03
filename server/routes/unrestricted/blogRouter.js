@@ -6,10 +6,9 @@ const Blogs = require("../../schemas/BlogSchema")
 
 // "/api/blogs/"
 
-const get = (req, res) => {
+const get = (req, res) => { //ok
   Blogs
     .find()
-    .populate('tag', { _id: 0 })
     .then(blogs => {
         res.status(200).json(blogs);
     })
@@ -20,12 +19,11 @@ const get = (req, res) => {
 
 
 
-const getID = (req, res) => {
+const getID = (req, res) => { //ok
     const { id } = req.params;
     
     Blogs
       .findById(id)
-      .populate('tag', { _id: 0 })
       .then(blog => {
           res.status(200).json(blog);
       })

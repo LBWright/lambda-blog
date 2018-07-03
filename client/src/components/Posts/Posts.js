@@ -2,8 +2,12 @@ import React from 'react';
 import Post from './Post';
 import TopFive from './Top-5';
 import Styled from 'styled-components';
+<<<<<<< HEAD
+import { Link } from 'react-router-dom';
+=======
 import {Link} from 'react-router-dom';
 import Search from './Search';
+>>>>>>> dc8fef5c7cda01e4e75c0a49a6864dfa5f2317c2
 
 const Container = Styled.div`
     display: flex;
@@ -33,7 +37,7 @@ const FeaturedContainer = Styled.div`
     width: 100%;
     display: flex;
     justify-content: center;
-`
+`;
 
 const Featured = Styled.div`
     border: 3px solid white;
@@ -65,13 +69,50 @@ const Head = Styled.h2`
     width: 55%;
     font-family: 'Times', serif;
     align-self: flex-start;
-`
+`;
 
 const Rule = Styled.hr`
     width: 40%;
 
 `;
 
+<<<<<<< HEAD
+const Posts = props => {
+  return (
+    <Container>
+      <Sidebar>
+        <TopFive posts={props.posts} />
+      </Sidebar>
+      <PostsContainer>
+        <Head>Lambda Times</Head>
+        <FeaturedContainer>
+          <Featured>
+            <FeaturedImg src="https://cdn-images-1.medium.com/max/1600/1*lcCQ6akUsQKjWTCdS28VAQ.png" />
+            <FeatureText>
+              <h3>Featured post headline</h3>
+              <p>Featured post body</p>
+            </FeatureText>
+          </Featured>
+        </FeaturedContainer>
+        {props.posts.map(post => {
+          return (
+            <Link
+              to={`/posts/${post.id}`}
+              style={{ textDecoration: 'none', color: 'black' }}
+            >
+              <PostBox>
+                <Post key={post.id} post={post} />
+              </PostBox>
+              <Rule />
+            </Link>
+          );
+        })}
+      </PostsContainer>
+    </Container>
+  );
+};
+export default Posts;
+=======
 
 
 class Posts extends React.Component {
@@ -127,3 +168,4 @@ searchFunction = event => {
 }
 
 export default Posts;
+>>>>>>> dc8fef5c7cda01e4e75c0a49a6864dfa5f2317c2

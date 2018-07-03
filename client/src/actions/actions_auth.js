@@ -7,14 +7,14 @@ import { SET_CURRENT_USER } from './types';
 export const registerUser = (userData, history) => dispatch => {
   console.log('sending:', userData);
   axios
-    .post('http://localhost:5000/api/users/register', userData)
+    .post('https://lambda-blog.herokuapp.com/api/users/register', userData)
     .then(res => history.push('/login'))
     .catch(err => alert(err));
 };
 
 export const loginUser = userData => dispatch => {
   axios
-    .post('http://localhost:5000/api/users/login', userData)
+    .post('https://lambda-blog.herokuapp.com/api/users/login', userData)
     .then(res => {
       // Save to localStorage
       console.log('logging from within loginUser', res.data);

@@ -5,7 +5,7 @@ import axios from 'axios';
 import Posts from './components/Posts/Posts';
 import { library } from '@fortawesome/fontawesome-svg-core';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import {faStar} from '@fortawesome/free-solid-svg-icons';
+import { faStar } from '@fortawesome/free-solid-svg-icons';
 
 library.add(faStar);
 
@@ -19,7 +19,7 @@ class App extends Component {
 
   componentDidMount() {
     axios
-      .get('https://jsonplaceholder.typicode.com/posts')
+      .get('https://localhost:5000/api/blogs')
       .then(response => {
         console.log(response);
         this.setState({ posts: response.data });
