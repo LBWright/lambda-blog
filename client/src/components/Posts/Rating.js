@@ -23,8 +23,8 @@ class Rating extends React.Component {
 
     addStars = (value) => {
         this.setState({stars: value});
-        incrementTotal();
-        calculatePercentage();
+        this.incrementTotal();
+        this.calculatePercentage();
     }
 
     incrementTotal = () => {

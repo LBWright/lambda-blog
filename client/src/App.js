@@ -19,7 +19,7 @@ class App extends Component {
 
   componentDidMount() {
     axios
-      .get('https://jsonplaceholder.typicode.com/posts')
+      .get('http://localhost:5000/api/blogs')
       .then(response => {
         console.log(response);
         this.setState({ posts: response.data });
