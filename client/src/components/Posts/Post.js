@@ -1,13 +1,13 @@
 import React, { Component } from 'react';
 import Styled from 'styled-components';
 import axios from 'axios';
-import { Link } from 'react-router-dom';
-//import Rating from './Rating';
+import Header from '../Layout/Header';
 
 const Headline = Styled.h3`
     font-family: 'PT Sans', sans-serif;
-    font-style: light;
+    font-style: bold;
     text-align: left;
+    font-size: 24px;
 `;
 
 const Body = Styled.p`
@@ -15,6 +15,22 @@ const Body = Styled.p`
     font-style: light;
     font-size: 14px;
     text-align: left;
+    height: 500px;
+  
+`;
+
+const HRule = Styled.hr`
+  width: 60%
+  border-color: rgb(147,29,37);
+`;
+
+const PostDiv = Styled.div`
+  display: flex;
+  flex-direction: column;
+  margin: auto;
+  width: 70%;
+  padding: 20px;
+  background: #f6f6f6;
 `;
 
 class Post extends Component {
@@ -43,8 +59,12 @@ class Post extends Component {
     const { post } = this.state;
     return (
       <div>
+      <Header />
+      <PostDiv>
         <Headline>{post.blog_title}</Headline>
+        <HRule />
         <Body>{post.blog_body}</Body>
+      </PostDiv>
       </div>
     );
   }

@@ -10,7 +10,13 @@ const BlogBox = Styled.div`
     width: 150px;
     height: 150px
     border: 1px solid lightgray;
-`
+`;
+
+const PostHead = Styled.h3`
+font-family: 'PT Sans', sans-serif;
+    font-style: light;
+    text-align: left;
+`;
 
 class TopFive extends React.Component {
     constructor(props) {
@@ -28,8 +34,9 @@ class TopFive extends React.Component {
     render() {
         return (
             <TopFiveContainer>
+                <h4>Recent Posts</h4>
                 {this.props.posts.map(post => {
-                    return  <div><BlogBox><Link to={`/posts/${post.id}`} style={{ textDecoration: 'none', color: 'black'}}><h3>{post.title}</h3></Link></BlogBox>
+                    return  <div><BlogBox><PostHead>{post.post_title}</PostHead></BlogBox>
                     <hr /></div>
                 })}
             

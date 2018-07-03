@@ -72,6 +72,19 @@ const Rule = Styled.hr`
 
 `;
 
+const PostHead = Styled.h3`
+font-family: 'PT Sans', sans-serif;
+    font-style: light;
+    text-align: left;
+`;
+
+const PostBody = Styled.p`
+font-family: 'PT Sans', sans-serif;
+font-style: light;
+font-size: 14px;
+text-align: left;
+`;
+
 class Posts extends React.Component {
   constructor(props) {
     super(props);
@@ -96,7 +109,7 @@ class Posts extends React.Component {
       <Container>
         <Sidebar>
           <Search searchFunction={this.searchFunction} />
-          <TopFive posts={this.props.posts.slice(1, 5)} />
+          <TopFive posts={this.props.posts.slice(0, 2)} />
         </Sidebar>
         <PostsContainer>
           <Head>Lambda Times</Head>
