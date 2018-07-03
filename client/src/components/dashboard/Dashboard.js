@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import axios from 'axios';
 import { connect } from 'react-redux';
+import { Link } from 'react-router-dom';
 
 class Dashboard extends Component {
   constructor(props) {
@@ -19,7 +20,7 @@ class Dashboard extends Component {
     const { id } = this.props.auth;
 
     axios
-      .get(`http://localhost:5000/api/auth/users/${id}`)
+      .get(`https://lambda-blog.herokuapp.com/api/users/${id}`)
       .then(res => {
         console.log(res.data);
         return res.data;
@@ -46,6 +47,9 @@ class Dashboard extends Component {
         <h4>Skills: </h4> <p>{profileData.skills}</p>
         <h4>Job Interests: </h4> <p>{profileData.job_interests}</p>
         <h4>About me: </h4> <p>{profileData.about}</p>
+        <Link to="/posts/new">
+          <button>Create a New Post</button>
+        </Link>
       </div>
     );
   }

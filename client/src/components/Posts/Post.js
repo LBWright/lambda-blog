@@ -1,5 +1,7 @@
-import React from 'react';
+import React, { Component } from 'react';
 import Styled from 'styled-components';
+import axios from 'axios';
+import { Link } from 'react-router-dom';
 //import Rating from './Rating';
 
 const Headline = Styled.h3`
@@ -15,13 +17,37 @@ const Body = Styled.p`
     text-align: left;
 `;
 
-const Post = props => {
+class Post extends Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      post: {}
+    };
+  }
+  componentDidMount() {
+    console.log('inside of CDM', this.props);
+    const { id } = this.props.match.params;
+    axios
+      .get(`https://lambda-blog.herokuapp.com/api/blogs/${id}`)
+      .then(res => {
+        console.log(res.data);
+        this.setState({ post: res.data });
+      })
+      .catch(err => console.log(err));
+  }
+  render() {
+    console.log(this.props);
+    if (this.state.post == null) {
+      <p>Loading...</p>;
+    }
+    const { post } = this.state;
     return (
-        <div>
-        <Headline>{props.post.title}</Headline>
-        <Body>{props.post.body}...</Body>
-        </div>
-    )
+      <div>
+        <Headline>{post.blog_title}</Headline>
+        <Body>{post.blog_body}</Body>
+      </div>
+    );
+  }
 }
 
 export default Post;

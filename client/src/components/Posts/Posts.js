@@ -2,7 +2,7 @@ import React from 'react';
 import Post from './Post';
 import TopFive from './Top-5';
 import Styled from 'styled-components';
-import {Link} from 'react-router-dom';
+import { Link } from 'react-router-dom';
 import Search from './Search';
 
 const Container = Styled.div`
@@ -33,7 +33,7 @@ const FeaturedContainer = Styled.div`
     width: 100%;
     display: flex;
     justify-content: center;
-`
+`;
 
 const Featured = Styled.div`
     border: 3px solid white;
@@ -65,64 +65,72 @@ const Head = Styled.h2`
     width: 55%;
     font-family: 'Times', serif;
     align-self: flex-start;
-`
+`;
 
 const Rule = Styled.hr`
     width: 40%;
 
 `;
 
-
-
 class Posts extends React.Component {
-    constructor(props) {
-        super(props);
-        this.state = {
-            posts: props.posts,
-            search: ''
-        }
-    }
+  constructor(props) {
+    super(props);
+    this.state = {
+      search: ''
+    };
+  }
 
-
-searchFunction = event => {
+  searchFunction = event => {
     const results = this.props.posts.map(item => {
       if (item.title.includes(event.target.value)) {
         return item;
-      }
-      else return;
+      } else return;
     });
     console.log(results);
     console.log(this.props.posts);
-    this.setState({search: results});
-  }
+    this.setState({ search: results });
+  };
 
   render() {
     return (
-        <Container>
-            <Sidebar>
-                <Search posts={this.state.posts} searchFunction={this.searchFunction}/>
-                <TopFive posts={this.state.posts}/>
-            </Sidebar>
+      <Container>
+        <Sidebar>
+          <Search searchFunction={this.searchFunction} />
+          <TopFive posts={this.props.posts.slice(1, 5)} />
+        </Sidebar>
         <PostsContainer>
-            <Head>Lambda Times</Head>
-            <FeaturedContainer>
+          <Head>Lambda Times</Head>
+          <FeaturedContainer>
             <Featured>
-                <FeaturedImg src='https://cdn-images-1.medium.com/max/1600/1*lcCQ6akUsQKjWTCdS28VAQ.png' />
-                <FeatureText><h3>Featured post headline</h3>
+              <FeaturedImg src="https://cdn-images-1.medium.com/max/1600/1*lcCQ6akUsQKjWTCdS28VAQ.png" />
+              <FeatureText>
+                <h3>Featured post headline</h3>
                 <p>Featured post body</p>
-                </FeatureText>
-                </Featured>
-            </FeaturedContainer>
-            <div> 
-            {this.state.search.length > 0 ? this.state.search : this.props.posts.map(post=> {
-                return <Link to={`/post/${post.id}`} style={{ textDecoration: 'none', color: 'black'}}><PostBox><Post key={post.id} post={post} /></PostBox><Rule /></Link>
-            })}
-            </div>
-        
+              </FeatureText>
+            </Featured>
+          </FeaturedContainer>
+          <div>
+            {this.state.search.length > 0
+              ? this.state.search
+              : this.props.posts.map(post => {
+                  return (
+                    <Link
+                      to={`/posts/${post._id}`}
+                      style={{ textDecoration: 'none', color: 'black' }}
+                    >
+                      <PostBox>
+                        <div>{post.blog_title}</div>
+                        <div>{post.blog_body}</div>
+                      </PostBox>
+                      <Rule />
+                    </Link>
+                  );
+                })}
+          </div>
         </PostsContainer>
-        </Container>
-    )
-}
+      </Container>
+    );
+  }
 }
 
 export default Posts;
