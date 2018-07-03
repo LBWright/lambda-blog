@@ -1,5 +1,6 @@
 import React from 'react';
 import Styled from 'styled-components';
+import Axios from 'axios';
 
 const TopFiveContainer = Styled.div`
     
@@ -15,40 +16,23 @@ class TopFive extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
-            first: '',
-            second: '',
-            third: '',
-            fourth: '',
-            fifth: ''
+            topFive: []
         }
     }
 
-    componentDidMount(props) {
-        //filter function to set state to top five posts
+  componentDidMount() {     
+        this.setState({ topFive: this.props.posts });
+   
     }
 
     render() {
         return (
             <TopFiveContainer>
-            <BlogBox>
-            <h4>1st ranked{this.state.first}</h4>
-            </BlogBox>
-            <hr />
-            <BlogBox>
-            <h4>2nd ranked{this.state.second}</h4>
-            </BlogBox>
-            <hr />
-            <BlogBox>
-            <h4>3rd ranked{this.state.third}</h4>
-            </BlogBox>
-            <hr />
-            <BlogBox>
-            <h4>4th ranked{this.state.fourth}</h4>
-            </BlogBox>
-            <hr />
-            <BlogBox>
-            <h4>5th ranked{this.state.fifth}</h4>
-            </BlogBox>
+                {this.props.posts.map(post => {
+                    return  <div><BlogBox><h3>{post.title}</h3></BlogBox>
+                    <hr /></div>
+                })}
+            
             </TopFiveContainer>
         )
     }

@@ -78,14 +78,14 @@ class Posts extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
-            posts: props.posts,
             search: ''
         }
     }
 
 
 searchFunction = event => {
-    const results = this.props.posts.map(item => {
+    event.preventDefault;
+    const results = this.props.posts.filter(item => {
       if (item.title.includes(event.target.value)) {
         return item;
       }
@@ -100,8 +100,9 @@ searchFunction = event => {
     return (
         <Container>
             <Sidebar>
-                <Search posts={this.state.posts} searchFunction={this.searchFunction}/>
-                <TopFive posts={this.state.posts}/>
+                <Search searchFunction={this.searchFunction}/>
+                <TopFive posts={this.props.posts.slice(1, 5)}/>
+               
             </Sidebar>
         <PostsContainer>
             <Head>Lambda Times</Head>
