@@ -16,13 +16,13 @@ const Body = Styled.p`
 `;
 
 const Post = props => {
-    return (
-        <div>
-        <Headline>{props.post.title}</Headline>
-        <Body>{props.post.body}...</Body>
-        <Rating />
-        </div>
-    )
-}
+  return (
+    <div>
+      <Headline>{props.post.title}</Headline>
+      <Body>{props.post.body}...</Body>
+      <Rating />
+    </div>
+  );
+};
 
 export default Post;

@@ -19,7 +19,7 @@ class Dashboard extends Component {
     const { id } = this.props.auth;
 
     axios
-      .get(`http://localhost:5000/api/auth/users/${id}`)
+      .get(`https://lambda-blog.herokuapp.com/api/users/${id}`)
       .then(res => {
         console.log(res.data);
         return res.data;
