@@ -1,25 +1,30 @@
-const express = require('express')
-const app = express()
 
-const cors = require('cors')
-const mongoose = require('mongoose')
-const jwt = require('jsonwebtoken')
+const express = require('express');
+const app = express();
 
-const database = 'LambdaBlogDb'
-const userRouter = require('./routes/unrestricted/userRouter')
-const blogRouter = require('./routes/unrestricted/blogRouter')
-const tagRouter = require('./routes/unrestricted/tagRouter')
-const restrictedRouter = require('./routes/restricted/userRouter')
-const cohortRouter = require('./routes/unrestricted/cohortRouter')
+const cors = require('cors');
+const mongoose = require('mongoose');
+const jwt = require('jsonwebtoken');
 
-mongoose
-  .connect(`mongodb://admin:admin1234@ds125041.mlab.com:25041/lambdablogdb`)
-  .then(() => {
+const database = "heroku_r8hcb39h";
+const userRouter = require("./routes/unrestricted/userRouter");
+const blogRouter = require("./routes/unrestricted/blogRouter");
+const tagRouter = require("./routes/unrestricted/tagRouter");
+const restrictedRouter = require("./routes/restricted/userRouter");
+
+const username = "lambdablog1234"
+const password = "temp1234"
+
+//'mongodb://user:pass@host:port/dbname';
+mongoose.connect(`mongodb://${username}:${password}@ds125831.mlab.com:25831/${database}`)
+ .then(() => {
     console.log(`Connected to ${database}`)
   })
   .catch(err => {
     console.log({ Error: err.message })
   })
+// mongoose.connect(`mongodb://localhost:27017/${database}`)
+ 
 
 app.get('/', (req, res) => {
   res.send({ api: 'api working successfully!' })
@@ -43,19 +48,23 @@ const restricted = (req, res, next) => {
 
 const corsOptions = {
   credentials: true
+};
+
+app.use(express.json());
+app.use(cors(corsOptions));
+
+app.use('/api/auth', restricted, restrictedRouter);
+app.use('/api/users', userRouter);
+app.use('/api/blogs', blogRouter);
+app.use('/api/tags', tagRouter);
+
+const PORT = process.env.PORT || '25831';
+=======
 }
 
 app.use(express.json())
 app.use(cors(corsOptions))
 
-app.use('/api/auth', restricted, restrictedRouter)
-app.use('/api/users', userRouter)
-app.use('/api/blogs', blogRouter)
-app.use('/api/tags', tagRouter)
-app.use('/api/cohorts', cohortRouter)
-
-const PORT = process.env.PORT || '5000'
-
 app.listen(PORT, () => {
   console.log(`Listening on port ${PORT}`)
-})
+});

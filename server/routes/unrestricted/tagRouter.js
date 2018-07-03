@@ -4,13 +4,13 @@ const router = express.Router();
 const Tags = require("../../schemas/TagSchema")
 
 
-// "/api/Tags/"
+// "/api/tags/"
 
-const get = (req, res) => {
+const get = (req, res) => { //works in heroku
   Tags
     .find()
-    .then(Tags => {
-        res.status(200).json(Tags);
+    .then(tags => {
+        res.status(200).json(tags);
     })
     .catch(err => {
         res.status(500).json({Error: err.message});
@@ -34,8 +34,8 @@ const getID = (req, res) => {
     
     Tags
       .findById(id)
-      .then(Tag => {
-          res.status(200).json(Tag);
+      .then(tag => {
+          res.status(200).json(tag);
       })
       .catch(err => {
           res.status(500).json({Error: err.message});
@@ -57,7 +57,7 @@ const deleteID = (req, res) => {
 
 const updateID = (req, res) => {
     const { id } = req.params;
-    const { tag_title, tag_body } = req.body;
+    const { tag_body } = req.body;
 
     Tags
       .findByIdAndUpdate(id, { tag_body })
@@ -72,7 +72,7 @@ const updateID = (req, res) => {
 
 
 router.route('/')
-    .get(get)
+    .get(get) //ok
     .post(post);
 
 router.route('/:id')
