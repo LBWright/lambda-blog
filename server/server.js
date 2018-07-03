@@ -5,14 +5,18 @@ const cors = require('cors');
 const mongoose = require('mongoose');
 const jwt = require('jsonwebtoken');
 
-const database = "LambdaBlogDb";
+const database = "heroku_r8hcb39h";
 const userRouter = require("./routes/unrestricted/userRouter");
 const blogRouter = require("./routes/unrestricted/blogRouter");
 const tagRouter = require("./routes/unrestricted/tagRouter");
 const restrictedRouter = require("./routes/restricted/userRouter");
-const cohortRouter = require("./routes/unrestricted/cohortRouter");
 
-mongoose.connect(`mongodb://localhost:27017/${database}`)
+const username = "lambdablog1234"
+const password = "temp1234"
+
+//'mongodb://user:pass@host:port/dbname';
+mongoose.connect(`mongodb://${username}:${password}@ds125831.mlab.com:25831/${database}`)
+// mongoose.connect(`mongodb://localhost:27017/${database}`)
   .then(() => {
     console.log(`Connected to ${database}`);
   })
@@ -56,7 +60,6 @@ app.use('/api/auth', restricted, restrictedRouter);
 app.use('/api/users', userRouter);
 app.use('/api/blogs', blogRouter);
 app.use('/api/tags', tagRouter);
-app.use('/api/cohorts', cohortRouter);
 
 const PORT = process.env.PORT || '5000';
 
