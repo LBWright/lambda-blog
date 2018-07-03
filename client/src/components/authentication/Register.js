@@ -139,7 +139,7 @@ class Register extends Component {
             onChange={this.onInputChange}
           />
           </div>
-          <button className="button-login" type="submit" value="Register">Register</button>
+          <button className="button-register" type="submit" value="Register">Register</button>
         </div>
         
  

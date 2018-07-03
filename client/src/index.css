@@ -43,6 +43,11 @@ body {
   height:25px;
   
 }
+.button-register{
+  height: 25px;
+  background:white;
+  
+}
 .register-form{
   display:flex;
   flex-direction:column;
