@@ -54,7 +54,6 @@ const updateProfile = (req, res) => {
     })
 }
 
-router.route('/users').get(get)
 
 router
   .route('/users/:id')

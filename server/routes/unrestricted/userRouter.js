@@ -1,26 +1,29 @@
-const express = require('express')
+const express = require('express');
 const router = express.Router()
 
-const jwt = require('jsonwebtoken')
-const User = require('../../schemas/UserSchema')
+const jwt = require('jsonwebtoken');
+const User = require('../../schemas/UserSchema');
+const Blog = require('../../schemas/BlogSchema');
 
 //   "/api/users"
+
+
 
 const tokenGenerator = user => {
   const options = {
     expiresIn: '24h'
   }
 
-  const payload = { name: user.username }
+  const payload = { name: user.username };
 
-  const secret = 'Blog-writing is so much fun!'
+  const secret = 'Blog-writing is so much fun!';
 
-  return jwt.sign(payload, secret, options)
+  return jwt.sign(payload, secret, options);
 };
 
 const getUsers = (req, res) => {
   User.find()
-    .select({ _id: 0 })
+    .select()
     .then(users => {
       res.status(200).json(users)
     })
@@ -39,7 +42,26 @@ const getProfile = (req, res) => {
       .catch(err => {
         res.status(500).json({ Error: err.message })
       });
-  };
+};
+
+const getBlogPosts = (req, res) => {
+    const { id } = req.params;
+    const { blog_title, blog_body, tag } = req.body;
+
+    Blog
+        .findById(id)
+        .then(blog => {
+            if(blog.length > 0){
+                res.status(200).json(blog);
+            }
+            else{
+                res.status(404).json({Error: "no blogs were found by the specified user"});
+            }
+        })
+        .catch(err => {
+            res.status(500).json({Error: err.message});
+        });
+};
 
 const register = (req, res) => {
   const {
@@ -111,6 +133,7 @@ const login = (req, res) => {
 
 router.route('/').get(getUsers)
 router.route('/:id').get(getProfile)
+router.route('/:id/blogs').get(getBlogPosts)
 
 router.route('/register').post(register)
 
