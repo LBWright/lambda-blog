@@ -19,7 +19,7 @@ class App extends Component {
 
   componentDidMount() {
     axios
-      .get('https://localhost:5000/api/blogs')
+      .get('https://lambda-blog.herokuapp.com/api/blogs')
       .then(response => {
         console.log(response);
         this.setState({ posts: response.data });

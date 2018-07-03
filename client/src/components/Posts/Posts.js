@@ -2,7 +2,7 @@ import React from 'react';
 import Post from './Post';
 import TopFive from './Top-5';
 import Styled from 'styled-components';
-import {Link} from 'react-router-dom';
+import { Link } from 'react-router-dom';
 import Search from './Search';
 
 const Container = Styled.div`
@@ -72,29 +72,24 @@ const Rule = Styled.hr`
 
 `;
 
-
-
 class Posts extends React.Component {
-    constructor(props) {
-        super(props);
-        this.state = {
-            search: ''
-        }
-    }
+  constructor(props) {
+    super(props);
+    this.state = {
+      search: ''
+    };
+  }
 
-
-searchFunction = event => {
-    event.preventDefault;
-    const results = this.props.posts.filter(item => {
+  searchFunction = event => {
+    const results = this.props.posts.map(item => {
       if (item.title.includes(event.target.value)) {
         return item;
-      }
-      else return;
+      } else return;
     });
     console.log(results);
     console.log(this.props.posts);
-    this.setState({search: results});
-  }
+    this.setState({ search: results });
+  };
 
   render() {
     return (
@@ -105,11 +100,12 @@ searchFunction = event => {
                
             </Sidebar>
         <PostsContainer>
-            <Head>Lambda Times</Head>
-            <FeaturedContainer>
+          <Head>Lambda Times</Head>
+          <FeaturedContainer>
             <Featured>
-                <FeaturedImg src='https://cdn-images-1.medium.com/max/1600/1*lcCQ6akUsQKjWTCdS28VAQ.png' />
-                <FeatureText><h3>Featured post headline</h3>
+              <FeaturedImg src="https://cdn-images-1.medium.com/max/1600/1*lcCQ6akUsQKjWTCdS28VAQ.png" />
+              <FeatureText>
+                <h3>Featured post headline</h3>
                 <p>Featured post body</p>
                 </FeatureText>
                 </Featured>
@@ -121,9 +117,9 @@ searchFunction = event => {
             </div>
         
         </PostsContainer>
-        </Container>
-    )
-}
+      </Container>
+    );
+  }
 }
 
 export default Posts;

@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import { connect } from 'react-redux';
 import axios from 'axios';
 
 class CreatePost extends Component {
@@ -18,10 +19,12 @@ class CreatePost extends Component {
   onSubmit = e => {
     e.preventDefault();
 
+    const { id } = this.props.auth;
     let blog = {
-      title: this.state.title,
+      post_title: this.state.title,
       tag: this.state.tag,
-      body: this.state.body
+      post_body: this.state.body,
+      userId: id
     };
     axios
       .post('https://lambda-blog.herokuapp.com/api/blogs', blog)
@@ -57,4 +60,11 @@ class CreatePost extends Component {
   }
 }
 
-export default CreatePost;
+const mapStateToProps = state => ({
+  auth: state.auth
+});
+
+export default connect(
+  mapStateToProps,
+  null
+)(CreatePost);

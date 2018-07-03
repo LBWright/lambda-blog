@@ -1,6 +1,6 @@
 import React from 'react';
 import Styled from 'styled-components';
-import Axios from 'axios';
+import {Link} from 'react-router-dom';
 
 const TopFiveContainer = Styled.div`
     
@@ -29,7 +29,7 @@ class TopFive extends React.Component {
         return (
             <TopFiveContainer>
                 {this.props.posts.map(post => {
-                    return  <div><BlogBox><h3>{post.title}</h3></BlogBox>
+                    return  <div><BlogBox><Link to={`/posts/${post.id}`} style={{ textDecoration: 'none', color: 'black'}}><h3>{post.title}</h3></Link></BlogBox>
                     <hr /></div>
                 })}
             

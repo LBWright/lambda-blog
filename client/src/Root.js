@@ -14,6 +14,7 @@ const Root = props => {
       <Route path="/register" component={Register} />
       <Route path="/dashboard" component={Dashboard} />
       <Route path="/posts/new" component={CreatePost} />
+      <Route path="/posts/:id" component={Post} />
       {/*<Route path="/profiles/:id" component={Profiles} />*/}
     </div>
   );
