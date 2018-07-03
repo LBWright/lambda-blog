@@ -1,6 +1,10 @@
 import React, { Component } from 'react';
 import Styled from 'styled-components';
+<<<<<<< HEAD
 import axios from 'axios';
+=======
+import {Link} from 'react-router-dom';
+>>>>>>> 5f3acbf76c9ffca464a556f45a3c8fb4108f5ba5
 //import Rating from './Rating';
 
 const Headline = Styled.h3`
@@ -16,6 +20,7 @@ const Body = Styled.p`
     text-align: left;
 `;
 
+<<<<<<< HEAD
 class Post extends Component {
   constructor(props) {
     super(props);
@@ -47,6 +52,15 @@ class Post extends Component {
       </div>
     );
   }
+=======
+const Post = props => {
+    return (
+        <div><Link to={`/posts/${props.post.id}`} style={{ textDecoration: 'none', color: 'black'}}>
+        <Headline>{props.post.title}</Headline></Link>
+        <Body>{props.post.body}...</Body>
+        </div>
+    )
+>>>>>>> 5f3acbf76c9ffca464a556f45a3c8fb4108f5ba5
 }
 
 export default Post;

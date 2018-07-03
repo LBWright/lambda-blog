@@ -76,7 +76,6 @@ class Posts extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      posts: props.posts,
       search: ''
     };
   }
@@ -94,14 +93,12 @@ class Posts extends React.Component {
 
   render() {
     return (
-      <Container>
-        <Sidebar>
-          <Search
-            posts={this.state.posts}
-            searchFunction={this.searchFunction}
-          />
-          <TopFive posts={this.state.posts} />
-        </Sidebar>
+        <Container>
+            <Sidebar>
+                <Search searchFunction={this.searchFunction}/>
+                <TopFive posts={this.props.posts.slice(1, 5)}/>
+               
+            </Sidebar>
         <PostsContainer>
           <Head>Lambda Times</Head>
           <FeaturedContainer>
@@ -110,6 +107,7 @@ class Posts extends React.Component {
               <FeatureText>
                 <h3>Featured post headline</h3>
                 <p>Featured post body</p>
+<<<<<<< HEAD
               </FeatureText>
             </Featured>
           </FeaturedContainer>
@@ -131,6 +129,17 @@ class Posts extends React.Component {
                   );
                 })}
           </div>
+=======
+                </FeatureText>
+                </Featured>
+            </FeaturedContainer>
+            <div> 
+            {this.state.search.length > 0 ? this.state.search : this.props.posts.map(post=> {
+                return <div><PostBox><Post key={post.id} post={post} /></PostBox><Rule /></div>
+            })}
+            </div>
+        
+>>>>>>> 5f3acbf76c9ffca464a556f45a3c8fb4108f5ba5
         </PostsContainer>
       </Container>
     );
