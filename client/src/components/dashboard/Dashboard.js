@@ -16,15 +16,23 @@ class Dashboard extends Component {
       alert('You must be logged in to view the dashboard.');
       return;
     }
-    const { id } = this.props.user;
+    console.log(this.props);
+    const { id } = this.props.auth.user;
+
     axios
-      .get(`http://localhost:5000/api/users/${id}`)
-      .then(res => res.data)
+      .get(`http://localhost:5000/api/auth/users/${id}`)
+      .then(res => {
+        console.log(res.data);
+        return res.data;
+      })
       .then(profileData => this.setState({ profileData }));
   }
 
   render() {
-    const { user } = this.props;
+    if (!this.state.profileData) {
+      return <p>Loading...</p>;
+    }
+    const { user } = this.props.auth;
     const { profileData } = this.state;
     return (
       <div>
