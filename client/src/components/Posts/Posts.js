@@ -2,12 +2,8 @@ import React from 'react';
 import Post from './Post';
 import TopFive from './Top-5';
 import Styled from 'styled-components';
-<<<<<<< HEAD
-import { Link } from 'react-router-dom';
-=======
 import {Link} from 'react-router-dom';
 import Search from './Search';
->>>>>>> dc8fef5c7cda01e4e75c0a49a6864dfa5f2317c2
 
 const Container = Styled.div`
     display: flex;
@@ -76,43 +72,6 @@ const Rule = Styled.hr`
 
 `;
 
-<<<<<<< HEAD
-const Posts = props => {
-  return (
-    <Container>
-      <Sidebar>
-        <TopFive posts={props.posts} />
-      </Sidebar>
-      <PostsContainer>
-        <Head>Lambda Times</Head>
-        <FeaturedContainer>
-          <Featured>
-            <FeaturedImg src="https://cdn-images-1.medium.com/max/1600/1*lcCQ6akUsQKjWTCdS28VAQ.png" />
-            <FeatureText>
-              <h3>Featured post headline</h3>
-              <p>Featured post body</p>
-            </FeatureText>
-          </Featured>
-        </FeaturedContainer>
-        {props.posts.map(post => {
-          return (
-            <Link
-              to={`/posts/${post.id}`}
-              style={{ textDecoration: 'none', color: 'black' }}
-            >
-              <PostBox>
-                <Post key={post.id} post={post} />
-              </PostBox>
-              <Rule />
-            </Link>
-          );
-        })}
-      </PostsContainer>
-    </Container>
-  );
-};
-export default Posts;
-=======
 
 
 class Posts extends React.Component {
@@ -157,7 +116,7 @@ searchFunction = event => {
             </FeaturedContainer>
             <div> 
             {this.state.search.length > 0 ? this.state.search : this.props.posts.map(post=> {
-                return <Link to={`/post/${post.id}`} style={{ textDecoration: 'none', color: 'black'}}><PostBox><Post key={post.id} post={post} /></PostBox><Rule /></Link>
+                return <div><PostBox><Post key={post.id} post={post} /></PostBox><Rule /></div>
             })}
             </div>
         
@@ -168,4 +127,3 @@ searchFunction = event => {
 }
 
 export default Posts;
->>>>>>> dc8fef5c7cda01e4e75c0a49a6864dfa5f2317c2
