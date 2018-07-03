@@ -132,8 +132,8 @@ class Posts extends React.Component {
                       style={{ textDecoration: 'none', color: 'black' }}
                     >
                       <PostBox>
-                        <PostHead>{post.post_title}</PostHead>
-                        <PostBody>{post.post_body}</PostBody>
+                        <div>{post.blog_title}</div>
+                        <div>{post.blog_body}</div>
                       </PostBox>
                       <Rule />
                     </Link>
