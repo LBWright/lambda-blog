@@ -17,20 +17,25 @@ export const loginUser = userData => dispatch => {
     .post('http://localhost:5000/api/users/login', userData)
     .then(res => {
       // Save to localStorage
+      console.log('logging from within loginUser', res.data);
       const { token } = res.data;
+      const { id } = res.data;
       localStorage.setItem('jwtToken', token);
       setAuthToken(token);
       const decoded = jwt_decode(token);
-      dispatch(setCurrentUser(decoded));
+      dispatch(setCurrentUser(id, decoded));
     })
     .catch(err => alert(err));
 };
 
 // Set logged in user
-export const setCurrentUser = decoded => {
+export const setCurrentUser = (id, decoded) => {
   return {
     type: SET_CURRENT_USER,
-    payload: decoded
+    payload: {
+      decoded,
+      id
+    }
   };
 };
 
