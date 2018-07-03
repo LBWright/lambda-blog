@@ -55,7 +55,7 @@ const corsOptions = {
 };
 
 app.use(express.json());
-app.use(helmet);
+app.use(helmet());
 app.use(cors(corsOptions));
 
 app.use('/api/auth', restricted, restrictedRouter);
