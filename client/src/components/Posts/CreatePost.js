@@ -21,15 +21,15 @@ class CreatePost extends Component {
 
     const { id } = this.props.auth;
     let blog = {
-      post_title: this.state.title,
+      blog_title: this.state.title,
       tag: this.state.tag,
-      post_body: this.state.body,
+      blog_body: this.state.body,
       userId: id
     };
     axios
       .post('https://lambda-blog.herokuapp.com/api/blogs', blog)
       .then(res => console.log(res.data))
-      .catch(err => console.log(err));
+      .catch(err => console.log(err.message));
     this.props.history.push('/');
   };
 
@@ -69,5 +69,5 @@ const mapStateToProps = state => ({
 
 export default connect(
   mapStateToProps,
-  null
+  {}
 )(CreatePost);

@@ -43,8 +43,8 @@ class Post extends Component {
     const { post } = this.state;
     return (
       <div>
-        <Headline>{post.post_title}</Headline>
-        <Body>{post.post_body}</Body>
+        <Headline>{post.blog_title}</Headline>
+        <Body>{post.blog_body}</Body>
       </div>
     );
   }
