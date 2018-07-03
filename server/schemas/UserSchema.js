@@ -8,24 +8,29 @@ const UserSchema = mongoose.Schema({
         required: true,
         unique: true
     },
+    firstName: {
+        type: String,
+        required: true
+    },
+    lastName: {
+        type: String,
+        required: true
+    },
     password: {
         type: String,
         required: true,
         minlength: 4
     },
     cohort_name: { 
-        type: mongoose.Schema.Types.ObjectId,
-        ref: "Cohort",
+        type: String,
         required: true
     },
     skills: {  
         type: String,
-        ref: "Skill",
         required: false
     },
     job_interests: {
         type: String,
-        ref: "Interest",
         required: false,
     },
     about: {

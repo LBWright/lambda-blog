@@ -63,10 +63,6 @@ const PORT = process.env.PORT || '5000';
 
 
 app.listen(PORT, () => {
-<<<<<<< HEAD
-  console.log('Listening on port 5000')
-})
-=======
+
   console.log(`Listening on port ${PORT}`)
 })
->>>>>>> fcda5f89b9739ccd56343c6d295b005827a9ee5a

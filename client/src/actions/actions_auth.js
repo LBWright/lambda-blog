@@ -4,28 +4,23 @@ import jwt_decode from 'jwt-decode';
 
 import { SET_CURRENT_USER } from './types';
 
-// Register User
 export const registerUser = (userData, history) => dispatch => {
+  console.log('sending:', userData);
   axios
-    .post('/api/users/register', userData)
+    .post('http://localhost:5000/api/users/register', userData)
     .then(res => history.push('/login'))
     .catch(err => alert(err));
 };
 
-// Login - Get User Token
 export const loginUser = userData => dispatch => {
   axios
-    .post('/api/users/login', userData)
+    .post('http://localhost:5000/api/users/login', userData)
     .then(res => {
       // Save to localStorage
       const { token } = res.data;
-      // Set token to ls
       localStorage.setItem('jwtToken', token);
-      // Set token to Auth header
       setAuthToken(token);
-      // Decode token to get user data
       const decoded = jwt_decode(token);
-      // Set current user
       dispatch(setCurrentUser(decoded));
     })
     .catch(err => alert(err));
