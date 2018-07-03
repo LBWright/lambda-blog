@@ -13,6 +13,10 @@ const definition = {
         type: String,
         required: true,
     },
+    userId: {
+        type: String,
+        
+    },
     createdOn: {
         type: Date,
         default: Date.now
